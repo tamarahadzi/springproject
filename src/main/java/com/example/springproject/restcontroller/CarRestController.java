@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -70,5 +71,20 @@ public class CarRestController {
     public void testapi(@RequestParam("aaa") String a) {
         String b = a;
         String c = b + "aaaaaaa";
+    }
+
+    @PostMapping("/getFreeCars")
+    public ResponseEntity<List<Car>> getFreeCars(@RequestParam("startDate") String startDate,
+                                                 @RequestParam("endDate") String endDate) {
+        try {
+            List<Car> allCars = carService.getAllCars();
+            List<Car> freeCars = new ArrayList<>();
+            for (Car car : allCars) {
+
+            }
+            return ResponseEntity.ok().body(null);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 }

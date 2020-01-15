@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class UserCarRestController {
                                                        @RequestParam("endDate") String endDate) {
         try {
             //zameniti datume!!!
-            userCarService.createUserCar(Long.valueOf(userId), Long.valueOf(carId), new Timestamp(44444), new Timestamp(555555));
+            userCarService.createUserCar(Long.valueOf(userId), Long.valueOf(carId), new Date(44444), new Date(555555));
             return ResponseEntity.ok().body(null);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
