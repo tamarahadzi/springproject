@@ -11,15 +11,17 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <meta name="google-signin-client_id" content="221081344470-rg4n7aeftjnpqhv1pu348gv67ftnqvbi.apps.googleusercontent.com">
 
-    <link rel="stylesheet" type="text/css" media="all" href="/css/login.css">
-    <script src="/js/login.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/login.css}">
+    <script th:src="@{/js/login.js}"></script>
 </head>
 <body>
 <div class="shadow-lg border border-secondary login-div">
     <h3 class="login-title">Log In</h3>
-    <input type="text" class="form-control login-width-margin" name="email" placeholder="Email address"/>
-    <input type="password" class="form-control login-width-margin" name="password" placeholder="Password"/>
-    <button type="button" class="btn btn-primary login-button">Log In</button>
+    <form action="#" th:action="@{/login}" method="post">
+        <input id="inputEmail" type="text" class="form-control login-width-margin" name="email" placeholder="Email address"/>
+        <input id="inputPassword" type="password" class="form-control login-width-margin" name="password" placeholder="Password"/>
+        <button id="loginButton" type="submit" class="btn btn-primary login-button">Log In</button>
+    </form>
     <hr/>
     <div class="login-google-facebook-div">
        <!-- <button type="button" id="googleLogin" class="btn btn-secondary login-google-facebook g-signin2" data-longtitle="true" data-onsuccess="onSignIn"><i class="fab fa-google-plus"></i> Via Google</button>-->
