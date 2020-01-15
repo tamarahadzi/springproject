@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- User table -->
+    <changeSet id="0001" author="software_developer">
+        <createTable tableName="user">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="email" type="varchar(120)">
+                <constraints unique="true" nullable="true" uniqueConstraintName="user_email"/>
+            </column>
+            <column name="password" type="varchar(255)"/>
+            <column name="first_name" type="varchar(255)"/>
+            <column name="last_name" type="varchar(255)"/>
+            <column name="role" type="varchar(255)"/>
+            <column name="date_created" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <!-- Car table -->
+    <changeSet id="0002" author="software_developer">
+        <createTable tableName="car">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="model" type="varchar(255)"/>
+            <column name="gearbox" type="varchar(255)"/>
+            <column name="price" type="double"/>
+            <column name="year" type="integer"/>
+            <column name="size" type="varchar(255)"/>
+            <column name="date_created" type="timestamp"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

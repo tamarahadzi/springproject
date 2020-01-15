@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0bad113881.js" crossorigin="anonymous"></script>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="221081344470-rg4n7aeftjnpqhv1pu348gv67ftnqvbi.apps.googleusercontent.com">
+
+    <link rel="stylesheet" type="text/css" media="all" href="/css/login.css">
+    <script src="/js/login.js"></script>
+</head>
+<body>
+<div class="shadow-lg border border-secondary login-div">
+    <h3 class="login-title">Log In</h3>
+    <input type="text" class="form-control login-width-margin" name="email" placeholder="Email address"/>
+    <input type="password" class="form-control login-width-margin" name="password" placeholder="Password"/>
+    <button type="button" class="btn btn-primary login-button">Log In</button>
+    <hr/>
+    <div class="login-google-facebook-div">
+       <!-- <button type="button" id="googleLogin" class="btn btn-secondary login-google-facebook g-signin2" data-longtitle="true" data-onsuccess="onSignIn"><i class="fab fa-google-plus"></i> Via Google</button>-->
+        <div class="g-signin2" data-longtitle="true" data-onsuccess="Google_signIn" data-theme="dark" data-width="200"></div>
+        <button type="button" id="facebookLogin" class="btn btn-secondary login-google-facebook"><i class="fab fa-facebook"></i> Via Facebook</button>
+    </div>
+</div>
+
+<script>
+    var login = new Login();
+    login.init();
+</script>
+
+</body>
+</html>

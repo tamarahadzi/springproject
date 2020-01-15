@@ -1,0 +1,34 @@
+.login-div {
+    width: 400px;
+    height: 310px;
+    margin: auto;
+    margin-top: 250px;
+}
+
+.login-title {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.login-width-margin {
+    width: 75%;
+    margin: auto;
+    display: block;
+}
+
+.login-button {
+    width: 45%;
+    margin: 15px auto;
+    display: block;
+}
+
+.login-google-facebook {
+    width: 45%;
+    margin: auto;
+    display: inline-block;
+}
+
+.login-google-facebook-div {
+    margin: auto;
+    display: flex;
+}
