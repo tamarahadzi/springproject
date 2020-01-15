@@ -14,7 +14,7 @@ public class CarService {
     @Autowired
     CarRepository carRepository;
 
-    public void createCar(String name, String model, String gearbox, Double price, Integer year, String size){
+    public List<Car> createCar(String name, String model, String gearbox, Double price, Integer year, String size){
         Car car = new Car();
         car.setName(name);
         car.setModel(model);
@@ -23,10 +23,14 @@ public class CarService {
         car.setYear(year);
         car.setSize(size);
         carRepository.save(car);
+        List<Car> cars = carRepository.findAll();
+        return cars;
     }
 
-    public void deleteCar(Long id) {
+    public List<Car> deleteCar(Long id) {
         carRepository.deleteById(id);
+        List<Car> cars = carRepository.findAll();
+        return cars;
     }
 
     public List<Car> getAllCars() {

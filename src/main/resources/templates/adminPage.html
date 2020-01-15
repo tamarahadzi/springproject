@@ -8,53 +8,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/0bad113881.js" crossorigin="anonymous"></script>
 
+    <script type="text/javascript" th:src="@{/js/riot/riot_compiler.min.js}"></script>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/adminPage.css}">
-    <script th:src="@{/js/adminPage.js}"></script>
+    <script type="text/javascript" th:src="@{/js/adminPage.js}"></script>
+    <script type="text/javascript" th:src="@{/js/adminPageRiot.js}"></script>
 </head>
 <body>
-<h3>Admin page</h3>
-<button id="addCarDialogButton" type="button" class="btn btn-primary">Add Car</button>
-<button id="freeCarsButton" type="button" class="btn btn-primary">Free Cars</button>
 
-<div class="modal" id="addCarDialog" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add Car</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <label for="addCarName">Name:</label>
-                <input id="addCarName" type="text" class="form-control" placeholder="Name"/>
-                <label for="addCarModel">Model:</label>
-                <input id="addCarModel" type="text" class="form-control" placeholder="Model"/>
-                <label for="addCarGearbox">Gearbox:</label>
-                <select id="addCarGearbox" class="form-control">
-                    <option value="NoGearbox">Choose gearbox</option>
-                    <option value="manual">Manual</option>
-                    <option value="automatic">Automatic</option>
-                </select>
-                <label for="addCarPrice">Price:</label>
-                <input id="addCarPrice" type="text" class="form-control" placeholder="Price"/>
-                <label for="addCarYear">Year:</label>
-                <input id="addCarYear" type="text" class="form-control" placeholder="Year"/>
-                <label for="addCarSize">Size:</label>
-                <select id="addCarSize" class="form-control">
-                    <option value="NoSize">Choose size</option>
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="large">Large</option>
-                </select>
-            </div>
-            <div class="modal-footer">
-                <button id="addCar" type="button" class="btn btn-primary">Add</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </div>
-</div>
+<adminpage></adminpage>
+<script th:src="@{/js/riotTemplates/adminpage.tag}" type="riot/tag"></script>
+
+<button id="freeCarsButton" type="button" class="btn btn-primary">Free Cars</button>
 
 <script>
     var adminPage = new AdminPage();
