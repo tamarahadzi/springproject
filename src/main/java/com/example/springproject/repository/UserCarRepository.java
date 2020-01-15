@@ -12,8 +12,8 @@ import java.util.List;
 @Repository
 public interface UserCarRepository extends JpaRepository<UserCar, Long> {
 
-    @Query(value = "select * from user_car where car_id = :carId", nativeQuery = true)
-    List<UserCar> findAllReservedByCarId(@Param("carId") Long carId/*,
+    @Query(value = "select * from user_car where car_id = :carId and :startDate between startDate and endDate or :endDate between startDate and endDate or", nativeQuery = true)
+    List<UserCar> findAllReservedByCarId(@Param("carId") Long carId,
                                         @Param("startDate") Date startDate,
-                                         @Param("endDate") Date endDate*/);
+                                         @Param("endDate") Date endDate);
 }

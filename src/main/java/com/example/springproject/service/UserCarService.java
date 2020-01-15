@@ -36,4 +36,8 @@ public class UserCarService {
     public List<UserCar> getUserCars() {
         return userCarRepository.findAll();
     }
+
+    public List<UserCar> getReservedByCar(Long carId, Date startDate, Date endDate) {
+        return userCarRepository.findAllReservedByCarId(carId, startDate, endDate);
+    }
 }
