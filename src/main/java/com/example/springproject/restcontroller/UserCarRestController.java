@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 @RestController
@@ -19,15 +20,17 @@ public class UserCarRestController {
     UserCarService userCarService;
 
     @PostMapping("/userCar")
-    public ResponseEntity<List<UserCar>> createUserCar(Authentication authentication,
+    public ResponseEntity<Boolean> createUserCar(Authentication authentication,
                                                        @RequestParam("userId") String userId,
                                                        @RequestParam("carId") String carId,
                                                        @RequestParam("startDate") String startDate,
                                                        @RequestParam("endDate") String endDate) {
         try {
-            //zameniti datume!!!
-            userCarService.createUserCar(Long.valueOf(userId), Long.valueOf(carId), new Date(44444), new Date(555555));
-            return ResponseEntity.ok().body(null);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
+            Date startDay = new Date(sdf.parse(startDate).getTime());
+            Date endDay = new Date(sdf.parse(endDate).getTime());
+            userCarService.createUserCar(Long.valueOf(userId), Long.valueOf(carId), startDay, endDay);
+            return ResponseEntity.ok().body(true);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }

@@ -67,5 +67,25 @@ function UserPageRiot() {
         }
     };
 
+    this.reserveCar = function () {
+        $.ajax({
+            type: "POST",
+            url: "/api/userCar",
+            data: {
+                carId: $("#selectCars").val(),
+                userId: loggedUserId,
+                startDate: $("#dateFrom").val(),
+                endDate: $("#dateTo").val()
+            },
+            success: function (response) {
+                if (response !== undefined && response !== []) {
+                    $("#selectCarsLabel").removeClass("display-none");
+                    $("#selectCars").removeClass("display-none");
+                    $("#reserveButton").removeClass("display-none");
+                }
+            },
+            error: {}
+        });
+    }
 
 }

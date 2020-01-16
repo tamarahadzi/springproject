@@ -18,6 +18,17 @@
 <userpage></userpage>
 <script th:src="@{/js/riotTemplates/userpage.tag}" type="riot/tag"></script>
 
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var loggedUserId = /*[[${loggedUserId}]]*/ "";
+    var loggedUserName = /*[[${loggedUserName}]]*/ "";
+    console.info("loggedUserId", loggedUserId);
+    console.info("loggedUserLanguage", loggedUserName);
+
+    /*]]>*/
+</script>
+
 <script>
     var userPage = new UserPage();
     userPage.init();
