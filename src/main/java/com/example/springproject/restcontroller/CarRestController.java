@@ -7,6 +7,7 @@ import com.example.springproject.service.UserCarService;
 import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
@@ -34,20 +35,19 @@ public class CarRestController {
                                                @RequestParam("year") String year,
                                                @RequestParam("size") String size) {
         try {
-
-            carService.createCar(name, model, gearbox, Double.valueOf(price), Integer.valueOf(year), size);
-            return ResponseEntity.ok().body(null);
+            List<Car> cars = carService.createCar(name, model, gearbox, Double.valueOf(price), Integer.valueOf(year), size);
+            return ResponseEntity.ok().body(cars);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
     }
 
     @DeleteMapping("/car/{id}")
-    public ResponseEntity<Boolean> deleteCar(Authentication authentication,
+    public ResponseEntity<List<Car>> deleteCar(Authentication authentication,
                                                @PathVariable("id") Long id) {
         try {
-            carService.deleteCar(id);
-            return ResponseEntity.ok().body(null);
+            List<Car> cars = carService.deleteCar(id);
+            return ResponseEntity.ok().body(cars);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -65,10 +65,10 @@ public class CarRestController {
     }
 
     @GetMapping("/car")
-    public ResponseEntity<List<Car>> getAllCars(Authentication authentication) {
+    public ResponseEntity<List<Car>> getAllCars(Authentication authentication, Model model) {
         try {
-            carService.getAllCars();
-            return ResponseEntity.ok().body(null);
+            List<Car> cars = carService.getAllCars();
+            return ResponseEntity.ok().body(cars);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }

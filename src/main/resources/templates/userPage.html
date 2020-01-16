@@ -8,11 +8,15 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/0bad113881.js" crossorigin="anonymous"></script>
 
+    <script type="text/javascript" th:src="@{/js/riot/riot_compiler.min.js}"></script>
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/userPage.css}">
-    <script th:src="@{/js/userPage.js}"></script>
+    <script type="text/javascript" th:src="@{/js/userPage.js}"></script>
+    <script type="text/javascript" th:src="@{/js/userPageRiot.js}"></script>
 </head>
 <body>
-<h3>User page</h3>
+
+<userpage></userpage>
+<script th:src="@{/js/riotTemplates/userpage.tag}" type="riot/tag"></script>
 
 <script>
     var userPage = new UserPage();

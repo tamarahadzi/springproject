@@ -1,6 +1,11 @@
 function AdminPage() {
 
-    $("#addCarDialogButton").on("click", function () {
+    this.init = function () {
+        var adminPageRiot = new AdminPageRiot();
+        adminPageRiot.init();
+    };
+
+    /*$("#addCarDialogButton").on("click", function () {
         console.info("open car dialog");
 
         $("#addCarDialog").modal('show');
@@ -41,10 +46,12 @@ function AdminPage() {
                 year: $("#addCarYear").val(),
                 size: $("#addCarSize").val()
             },
-            success: {},
+            success: function () {
+                $("#addCarDialog").modal('hide');
+            },
             error: {}
         });
 
-    });
+    });*/
 
 }

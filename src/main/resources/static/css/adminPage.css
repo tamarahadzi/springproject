@@ -1,0 +1,8 @@
+.label {
+    margin-top: 15px;
+}
+
+.group-td {
+    vertical-align: middle !important;
+    border-bottom: 1px solid #dee2e6;
+}
