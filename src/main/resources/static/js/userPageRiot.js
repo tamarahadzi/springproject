@@ -38,28 +38,18 @@ function UserPageRiot() {
         });
     };
 
-    this.freeCars = function () {
-        $.ajax({
-            type: "POST",
-            url: "/api/getFreeCars",
-            data: {
-                startDate: "start",
-                endDate: "end"
-            },
-            success: function (response) {
-                console.info("free cars", response.body);
-            },
-            error: {}
-        });
-    };
-
     this.checkFreeCars = function () {
         console.info("fromVal", $("#dateFrom").val());
         console.info("toVal", $("#dateTo").val());
         if($("#dateFrom").val() !== "" && $("#dateTo").val()) {
-            jQuery.ajax({
-                type: "GET",
-                url: "/api/car",
+
+            $.ajax({
+                type: "POST",
+                url: "/api/getFreeCars",
+                data: {
+                    startDate: $("#dateFrom").val(),
+                    endDate: $("#dateTo").val()
+                },
                 success: function (response) {
                     if (response !== undefined && response !== []) {
                         viewObj.cars = response;
@@ -72,9 +62,7 @@ function UserPageRiot() {
                         $("#reserveButton").addClass("display-block");
                     }
                 },
-                error: function () {
-                    console.error("error - this.userPage");
-                }
+                error: {}
             });
         }
     };

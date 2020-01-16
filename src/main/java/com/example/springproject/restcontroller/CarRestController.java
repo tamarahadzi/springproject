@@ -85,8 +85,8 @@ public class CarRestController {
                                                  @RequestParam("endDate") String endDate) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
-            Date startDay = new Date(sdf.parse("2020-01-01").getTime());
-            Date endDay = new Date(sdf.parse("2020-01-10").getTime());
+            Date startDay = new Date(sdf.parse(startDate).getTime());
+            Date endDay = new Date(sdf.parse(endDate).getTime());
             List<Car> allCars = carService.getAllCars();
             List<Car> freeCars = new ArrayList<>();
             for (Car car : allCars) {
