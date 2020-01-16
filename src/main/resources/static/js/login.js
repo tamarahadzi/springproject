@@ -2,39 +2,27 @@ function Login () {
 
     this.init = function () {
 
-        /*gapi.load('auth2', function() {
-            /!* Ready. Make a call to gapi.auth2.init or some other API *!/
-        });*/
+        $("#registerDialogButton").on("click", function () {
+            console.info("register");
 
-        /*$("#googleLogin").on("click", function () {
-            console.info("via google");
-            $.ajax({
-                type: "GET",
-                url: "/login/google",
-                beforeSend: function(request) {
-                    request.setRequestHeader("Access-Control-Allow-Origin", "*");
-                    request.setRequestHeader("grant_type", "client_credentials");
-                    request.setRequestHeader("client_id", "221081344470-rg4n7aeftjnpqhv1pu348gv67ftnqvbi.apps.googleusercontent.com");
-                    request.setRequestHeader("client_secret", "HjyuhhP0wJTQCWNz-nJgQeXc");
-                    request.setRequestHeader("Content-Type", "application/json");
-                    request.setRequestHeader("Accept", "application/json");
-                },
-                data: {},
-                success: {},
-                error: {}
-            })
-        });*/
+            $("#registerDialog").modal('show');
+        });
 
-        $("#facebookLogin").on("click", function () {
-            console.info("via facebook");
+        $("#registerButton").on("click", function () {
+            console.info("register click");
 
             $.ajax({
-                type: "GET",
-                url: "/api/testapi",
+                type: "POST",
+                url: "/api/user",
                 data: {
-                    aaa: "asdasd"
+                    firstName: $("#firstName").val(),
+                    lastName: $("#lastName").val(),
+                    email: $("#email").val(),
+                    password: $("#password").val()
                 },
-                success: {},
+                success: function () {
+                    $("#registerDialog").modal('hide');
+                },
                 error: {}
             })
         });

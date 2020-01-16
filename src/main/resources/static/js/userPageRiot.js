@@ -84,6 +84,9 @@ function UserPageRiot() {
                 },
                 error: {}
             });
+        } else {
+            $("#carDetailsTable").removeClass("display-block");
+            $("#carDetailsTable").addClass("display-none");
         }
     };
 

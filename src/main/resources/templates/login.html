@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/login.css}">
     <script th:src="@{/js/login.js}"></script>
 </head>
-<body>
+<body th:style="'background: url(/wallpaper.jpg) no-repeat center center fixed; background-size: cover;'">
 <div class="shadow-lg border border-secondary login-div">
     <h3 class="login-title">Log In</h3>
     <form action="#" th:action="@{/login}" method="post">
@@ -26,7 +26,34 @@
     <div class="login-google-facebook-div">
        <!-- <button type="button" id="googleLogin" class="btn btn-secondary login-google-facebook g-signin2" data-longtitle="true" data-onsuccess="onSignIn"><i class="fab fa-google-plus"></i> Via Google</button>-->
         <div class="g-signin2" data-longtitle="true" data-onsuccess="Google_signIn" data-theme="dark" data-width="200"></div>
-        <button type="button" id="facebookLogin" class="btn btn-secondary login-google-facebook"><i class="fab fa-facebook"></i> Via Facebook</button>
+        <button type="button" id="registerDialogButton" class="btn btn-secondary login-google-facebook">Register</button>
+    </div>
+</div>
+
+<div class="modal" id="registerDialog" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Register</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label for="firstName">First name:</label>
+                <input id="firstName" type="text" class="form-control" placeholder="First name"/>
+                <label for="lastName" class="label">Last name:</label>
+                <input id="lastName" type="text" class="form-control" placeholder="Last name"/>
+                <label for="email" class="label">Email address:</label>
+                <input id="email" type="text" class="form-control" placeholder="Email address"/>
+                <label for="password" class="label">Password:</label>
+                <input id="password" type="password" class="form-control" placeholder="Password"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="registerButton">Register</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
     </div>
 </div>
 
