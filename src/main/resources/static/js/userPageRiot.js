@@ -39,7 +39,18 @@ function UserPageRiot() {
     };
 
     this.freeCars = function () {
-
+        $.ajax({
+            type: "POST",
+            url: "/api/getFreeCars",
+            data: {
+                startDate: "start",
+                endDate: "end"
+            },
+            success: function (response) {
+                console.info("free cars", response.body);
+            },
+            error: {}
+        });
     };
 
     this.checkFreeCars = function () {

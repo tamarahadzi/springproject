@@ -37,4 +37,16 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="0003" author="software_developer">
+        <createTable tableName="user_car">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint"/>
+            <column name="car_id" type="bigint"/>
+            <column name="start_date" type="date"/>
+            <column name="end_date" type="date"/>
+        </createTable>
+    </changeSet>
+
 </databaseChangeLog>

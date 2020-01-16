@@ -95,7 +95,7 @@ public class CarRestController {
                     freeCars.add(car);
                 }
             }
-            return ResponseEntity.ok().body(null);
+            return ResponseEntity.ok().body(freeCars);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
