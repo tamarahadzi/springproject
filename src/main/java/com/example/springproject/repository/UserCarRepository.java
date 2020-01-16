@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface UserCarRepository extends JpaRepository<UserCar, Long> {
 
-    @Query(value = "select * from user_car where car_id = :carId and :startDate between start_date and end_date or :endDate between start_date and end_date;", nativeQuery = true)
+    @Query(value = "select * from user_car where user_car.car_id = :carId and (user_car.start_date between :startDate and :endDate or user_car.end_date between :startDate and :endDate)", nativeQuery = true)
     List<UserCar> findAllReservedByCarId(@Param("carId") Long carId,
                                         @Param("startDate") Date startDate,
                                          @Param("endDate") Date endDate);
