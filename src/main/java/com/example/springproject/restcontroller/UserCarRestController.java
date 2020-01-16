@@ -26,11 +26,16 @@ public class UserCarRestController {
                                                        @RequestParam("startDate") String startDate,
                                                        @RequestParam("endDate") String endDate) {
         try {
-            SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
-            Date startDay = new Date(sdf.parse(startDate).getTime());
-            Date endDay = new Date(sdf.parse(endDate).getTime());
-            userCarService.createUserCar(Long.valueOf(userId), Long.valueOf(carId), startDay, endDay);
-            return ResponseEntity.ok().body(true);
+            if (authentication != null) {
+                if (authentication.isAuthenticated()) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
+                    Date startDay = new Date(sdf.parse(startDate).getTime());
+                    Date endDay = new Date(sdf.parse(endDate).getTime());
+                    userCarService.createUserCar(Long.valueOf(userId), Long.valueOf(carId), startDay, endDay);
+                    return ResponseEntity.ok().body(true);
+                }
+            }
+            return ResponseEntity.badRequest().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -40,8 +45,13 @@ public class UserCarRestController {
     public ResponseEntity<Boolean> getUserCar(Authentication authentication,
                                               @PathVariable("id") Long id) {
         try {
-            userCarService.getUserCar(id);
-            return ResponseEntity.ok().body(null);
+            if (authentication != null) {
+                if (authentication.isAuthenticated()) {
+                    userCarService.getUserCar(id);
+                    return ResponseEntity.ok().body(null);
+                }
+            }
+            return ResponseEntity.badRequest().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -51,8 +61,13 @@ public class UserCarRestController {
     public ResponseEntity<Boolean> deleteUserCar(Authentication authentication,
                                                  @PathVariable("id") Long id) {
         try {
-            userCarService.deleteUserCar(id);
-            return ResponseEntity.ok().body(null);
+            if (authentication != null) {
+                if (authentication.isAuthenticated()) {
+                    userCarService.deleteUserCar(id);
+                    return ResponseEntity.ok().body(null);
+                }
+            }
+            return ResponseEntity.badRequest().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
