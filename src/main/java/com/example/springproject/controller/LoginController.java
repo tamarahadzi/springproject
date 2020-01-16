@@ -51,8 +51,8 @@ public class LoginController {
                         Authentication authentication = authenticationManager.authenticate(authToken);
                         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-                        model.addAttribute("currentUserId", optionalUser.get().getId());
-                        model.addAttribute("currentUserName", optionalUser.get().getFirstName() + " " + optionalUser.get().getLastName());
+                        model.addAttribute("loggedUserId", optionalUser.get().getId());
+                        model.addAttribute("loggedUserName", optionalUser.get().getFirstName() + " " + optionalUser.get().getLastName());
 
                         return "adminPage";
                     } else {
@@ -62,8 +62,8 @@ public class LoginController {
                         Authentication authentication = authenticationManager.authenticate(authToken);
                         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-                        model.addAttribute("currentUserId", optionalUser.get().getId());
-                        model.addAttribute("currentUserName", optionalUser.get().getFirstName() + " " + optionalUser.get().getLastName());
+                        model.addAttribute("loggedUserId", optionalUser.get().getId());
+                        model.addAttribute("loggedUserName", optionalUser.get().getFirstName() + " " + optionalUser.get().getLastName());
 
                         return "userPage";
                     }

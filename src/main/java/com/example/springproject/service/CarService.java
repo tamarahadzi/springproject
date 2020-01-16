@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarService {
@@ -40,7 +41,7 @@ public class CarService {
     }
 
     public Car getCar(Long id) {
-        Car car = carRepository.getOne(id);
-        return car;
+        Optional<Car> optionalCar = carRepository.findById(id);
+        return optionalCar.get();
     }
 }

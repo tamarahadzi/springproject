@@ -3,7 +3,8 @@ function UserPageRiot() {
     var thisClass = this;
 
     var viewObj = {
-        cars: undefined
+        cars: undefined,
+        car1: undefined
     };
 
     this.init = function () {
@@ -60,6 +61,25 @@ function UserPageRiot() {
                         $("#selectCarsLabel").addClass("display-block");
                         $("#selectCars").addClass("display-block");
                         $("#reserveButton").addClass("display-block");
+                    }
+                },
+                error: {}
+            });
+        }
+    };
+
+    this.carDetails = function () {
+        if ($("#selectCars").val() !== "noCar") {
+            $.ajax({
+                type: "GET",
+                url: "/api/car/" + $("#selectCars").val(),
+                data: {},
+                success: function (response) {
+                    if (response !== undefined && response !== []) {
+                        viewObj.car1 = response;
+                        viewObj.update();
+                        $("#carDetailsTable").removeClass("display-none");
+                        $("#carDetailsTable").addClass("display-block");
                     }
                 },
                 error: {}

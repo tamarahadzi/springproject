@@ -54,11 +54,11 @@ public class CarRestController {
     }
 
     @GetMapping("/car/{id}")
-    public ResponseEntity<Boolean> getCar(Authentication authentication,
+    public ResponseEntity<Car> getCar(Authentication authentication,
                                              @PathVariable("id") Long id) {
         try {
-            carService.getCar(id);
-            return ResponseEntity.ok().body(null);
+            Car car = carService.getCar(id);
+            return ResponseEntity.ok().body(car);
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }

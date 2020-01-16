@@ -10,10 +10,38 @@
         <input type="date" class="form-control" id="dateTo" onchange="{opts.serviceClass.checkFreeCars}">
 
         <label class="label display-none" id="selectCarsLabel" for="selectCars">Available cars:</label>
-        <select id="selectCars" class="form-control display-none">
+        <select id="selectCars" class="form-control display-none" onchange="{opts.serviceClass.carDetails}">
             <option value="NoCar">Choose car</option>
             <option each="{ car in cars }" value="{ car.id }">{ car.name }</option>
         </select>
+
+        <table class="table display-none" id="carDetailsTable">
+            <tr>
+                <th>Name</th>
+                <td>{ car1.name }</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{ car1.model }</td>
+            </tr>
+            <tr>
+                <th>Gearbox</th>
+                <td>{ car1.gearbox }</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{ car1.price }</td>
+            </tr>
+            <tr>
+                <th>Year</th>
+                <td>{ car1.year }</td>
+            </tr>
+            <tr>
+                <th>Size</th>
+                <td>{ car1.size }</td>
+            </tr>
+
+        </table>
 
         <button id="reserveButton" type="button" class="btn btn-primary display-none" onclick="{opts.serviceClass.reserveCar}">Reserve</button>
     </div>
