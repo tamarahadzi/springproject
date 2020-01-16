@@ -4,9 +4,9 @@ import com.example.springproject.model.Car;
 import com.example.springproject.model.UserCar;
 import com.example.springproject.service.CarService;
 import com.example.springproject.service.UserCarService;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,8 +35,13 @@ public class CarRestController {
                                                @RequestParam("year") String year,
                                                @RequestParam("size") String size) {
         try {
-            List<Car> cars = carService.createCar(name, model, gearbox, Double.valueOf(price), Integer.valueOf(year), size);
-            return ResponseEntity.ok().body(cars);
+            if (authentication != null) {
+                if (authentication.isAuthenticated()) {
+                    List<Car> cars = carService.createCar(name, model, gearbox, Double.valueOf(price), Integer.valueOf(year), size);
+                    return ResponseEntity.ok().body(cars);
+                }
+            }
+            return ResponseEntity.badRequest().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -46,8 +51,13 @@ public class CarRestController {
     public ResponseEntity<List<Car>> deleteCar(Authentication authentication,
                                                @PathVariable("id") Long id) {
         try {
-            List<Car> cars = carService.deleteCar(id);
-            return ResponseEntity.ok().body(cars);
+            if (authentication != null) {
+                if (authentication.isAuthenticated()) {
+                    List<Car> cars = carService.deleteCar(id);
+                    return ResponseEntity.ok().body(cars);
+                }
+            }
+            return ResponseEntity.badRequest().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -57,8 +67,13 @@ public class CarRestController {
     public ResponseEntity<Boolean> getCar(Authentication authentication,
                                              @PathVariable("id") Long id) {
         try {
-            carService.getCar(id);
-            return ResponseEntity.ok().body(null);
+            if (authentication != null) {
+                if (authentication.isAuthenticated()) {
+                    carService.getCar(id);
+                    return ResponseEntity.ok().body(null);
+                }
+            }
+            return ResponseEntity.badRequest().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -67,8 +82,13 @@ public class CarRestController {
     @GetMapping("/car")
     public ResponseEntity<List<Car>> getAllCars(Authentication authentication, Model model) {
         try {
-            List<Car> cars = carService.getAllCars();
-            return ResponseEntity.ok().body(cars);
+            if (authentication != null) {
+                if (authentication.isAuthenticated()) {
+                    List<Car> cars = carService.getAllCars();
+                    return ResponseEntity.ok().body(cars);
+                }
+            }
+            return ResponseEntity.badRequest().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
         }
@@ -81,7 +101,8 @@ public class CarRestController {
     }
 
     @PostMapping("/getFreeCars")
-    public ResponseEntity<List<Car>> getFreeCars(@RequestParam("startDate") String startDate,
+    public ResponseEntity<List<Car>> getFreeCars(Authentication authentication,
+                                                 @RequestParam("startDate") String startDate,
                                                  @RequestParam("endDate") String endDate) {
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");

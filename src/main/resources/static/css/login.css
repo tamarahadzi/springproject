@@ -13,6 +13,7 @@
 .login-width-margin {
     width: 75%;
     margin: auto;
+    margin-top: 15px;
     display: block;
 }
 
