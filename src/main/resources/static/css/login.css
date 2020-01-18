@@ -2,7 +2,7 @@
     width: 400px;
     height: 310px;
     margin-left: 130px;
-    margin-top: 130px;
+    margin-top: 45px;
     background: #9F7965;
 }
 
@@ -37,4 +37,9 @@
 
 .label {
     margin-top: 15px;
+}
+
+.title {
+    text-align: center;
+    font-size: 85px;
 }

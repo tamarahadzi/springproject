@@ -15,6 +15,10 @@
 </head>
 <body>
 
+<form action="#" th:action="@{/logout}" method="post">
+    <button class="btn btn-primary logout-button">Logout</button>
+</form>
+
 <adminpage></adminpage>
 <script th:src="@{/js/riotTemplates/adminpage.tag}" type="riot/tag"></script>
 

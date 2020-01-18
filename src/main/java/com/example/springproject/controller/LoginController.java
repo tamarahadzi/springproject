@@ -75,6 +75,17 @@ public class LoginController {
         return "login";
     }
 
+    @PostMapping("/logout")
+    public String logout() {
+        try {
+            SecurityContextHolder.getContext().setAuthentication(null);
+            return "login";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "login";
+    }
+
 
 
 }

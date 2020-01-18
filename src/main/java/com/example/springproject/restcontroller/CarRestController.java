@@ -65,7 +65,7 @@ public class CarRestController {
 
     @GetMapping("/car/{id}")
     public ResponseEntity<Car> getCar(Authentication authentication,
-                                             @PathVariable("id") Long id) {
+                                      @PathVariable("id") Long id) {
         try {
             if (authentication != null) {
                 if (authentication.isAuthenticated()) {

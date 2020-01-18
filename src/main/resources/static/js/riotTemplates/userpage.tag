@@ -11,7 +11,7 @@
 
         <label class="label display-none" id="selectCarsLabel" for="selectCars">Available cars:</label>
         <select id="selectCars" class="form-control display-none" onchange="{opts.serviceClass.carDetails}">
-            <option value="NoCar">Choose car</option>
+            <option value="noCar">Choose car</option>
             <option each="{ car in cars }" value="{ car.id }">{ car.name }</option>
         </select>
 

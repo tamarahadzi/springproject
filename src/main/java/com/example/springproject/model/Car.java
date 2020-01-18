@@ -38,8 +38,7 @@ public class Car {
     private String size;
 
     @Column(name = "date_created")
-    @Generated(GenerationTime.INSERT
-    )
+    @Generated(GenerationTime.INSERT)
     private Timestamp dateCreated;
 
     public Long getId() {
